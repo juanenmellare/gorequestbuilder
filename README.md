@@ -6,8 +6,6 @@
 # <img width="60px" align="center" src="https://miro.medium.com/fit/c/262/262/1*yh90bW8jL4f8pOTZTvbzqw.png">Go Request Builder
 A simple request (http.Request) builder for Golang.
 
-
-
 ## Import
 
 ```go
@@ -50,3 +48,11 @@ var requestBuilder = gorequestbuilder.NewRequestBuilder()
 requestBuilder.SetMethodPost().SetBody(body)
 ```
 
+## Build
+```go
+var requestBuilder = gorequestbuilder.NewRequestBuilder()
+.
+.
+.
+requestBuilder.Build()
+```
