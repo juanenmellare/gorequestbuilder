@@ -13,8 +13,18 @@ import "github.com/juanenmellare/gorequestbuilder"
 ```
 
 ## Quick Start
-
 ```go
-request, err := gorequestbuilder.NewRequestBuilder().SetMethodGet().SetBaseURL("https://golang.org/").Build()
+request, err := gorequestbuilder.NewRequestBuilder().
+    SetMethodGet().
+	  SetBaseURL("https://golang.org/").
+    SetPath()
+	  Build()
+ ```
+ 
+ ## Headers
+```go
+var requestBuilder = gorequestbuilder.NewRequestBuilder()
+requestBuilder.AddHeader("Authorization", "Basic R29sYW5nIERldmVsb3Blcg==")
 ```
+
 
