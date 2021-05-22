@@ -3,10 +3,10 @@
 [![CircleCI](https://circleci.com/gh/juanenmellare/gorequestbuilder.svg?style=shield)](https://circleci.com/gh/juanenmellare/gorequestbuilder)
 [![codecov](https://codecov.io/gh/juanenmellare/gorequestbuilder/branch/main/graph/badge.svg?token=ZCRF68IC8Z)](https://codecov.io/gh/juanenmellare/gorequestbuilder)
 
-<img align="right" width="140px" src="https://www.clipartmax.com/png/small/111-1112912_go-gopher-go-programming-language-logo.png">
-
-# Go Request Builder
+# <img width="60px" align="center" src="https://miro.medium.com/fit/c/262/262/1*yh90bW8jL4f8pOTZTvbzqw.png">Go Request Builder
 A simple request (http.Request) builder for Golang.
+
+
 
 ## Import
 
@@ -18,8 +18,8 @@ import "github.com/juanenmellare/gorequestbuilder"
 ```go
 request, err := gorequestbuilder.NewRequestBuilder().
     SetMethodGet().
-    SetBaseURL("https://golang.org/").
-    SetPath().
+    SetBaseURL("https://en.wikipedia.org/").
+    SetPath("/wiki/Go_(programming_language)").
     Build()
  ```
  
@@ -29,4 +29,9 @@ var requestBuilder = gorequestbuilder.NewRequestBuilder()
 requestBuilder.AddHeader("Authorization", "Basic R29sYW5nIERldmVsb3Blcg==")
 ```
 
+ ## Query Parameters
+```go
+var requestBuilder = gorequestbuilder.NewRequestBuilder()
+requestBuilder.AddQueryParameter("query", "language=golang")
+```
 
