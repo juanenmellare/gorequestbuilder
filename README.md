@@ -4,4 +4,10 @@
 [![codecov](https://codecov.io/gh/juanenmellare/gorequestbuilder/branch/main/graph/badge.svg?token=ZCRF68IC8Z)](https://codecov.io/gh/juanenmellare/gorequestbuilder)
 
 # Go Request Builder
-A simple request builder for Golang.
+A simple request (http.Request) builder for Golang.
+
+## Import
+
+```go
+import "github.com/juanenmellare/gorequestbuilder"
+```
