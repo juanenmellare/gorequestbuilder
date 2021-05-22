@@ -3,6 +3,8 @@
 [![CircleCI](https://circleci.com/gh/juanenmellare/gorequestbuilder.svg?style=shield)](https://circleci.com/gh/juanenmellare/gorequestbuilder)
 [![codecov](https://codecov.io/gh/juanenmellare/gorequestbuilder/branch/main/graph/badge.svg?token=ZCRF68IC8Z)](https://codecov.io/gh/juanenmellare/gorequestbuilder)
 
+<img align="right" width="140px" src="https://www.clipartmax.com/png/small/111-1112912_go-gopher-go-programming-language-logo.png">
+
 # Go Request Builder
 A simple request (http.Request) builder for Golang.
 
