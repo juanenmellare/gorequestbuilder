@@ -1,4 +1,4 @@
-module github.com/gin-gonic/gin
+module https://github.com/juanenmellare/gorequestbuilder
 
 go 1.16
 
