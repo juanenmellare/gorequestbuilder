@@ -11,3 +11,10 @@ A simple request (http.Request) builder for Golang.
 ```go
 import "github.com/juanenmellare/gorequestbuilder"
 ```
+
+## Quick Start
+
+```go
+	request, err := gorequestbuilder.NewRequestBuilder().SetMethodGet().SetBaseURL("https://golang.org/").Build()
+```
+
