@@ -1,5 +1,4 @@
-module github.com/juanenmellare/gorequestbuilder
-
+module gorequestbuilder
 
 go 1.16
 
