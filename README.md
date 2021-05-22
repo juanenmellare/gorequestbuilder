@@ -35,3 +35,17 @@ var requestBuilder = gorequestbuilder.NewRequestBuilder()
 requestBuilder.AddQueryParameter("query", "language=golang")
 ```
 
+## Body
+```go
+type Body struct {
+	Message string `json:"message"`
+}
+	
+body := &Body{
+	Message: "Golang is awesome!",
+}
+
+var requestBuilder = gorequestbuilder.NewRequestBuilder()
+requestBuilder.SetMethodPost().SetBody(body)
+```
+
