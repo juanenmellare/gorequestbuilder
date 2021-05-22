@@ -1,4 +1,4 @@
-module go-request-builder
+module gorequestbuilder
 
 go 1.16
 
