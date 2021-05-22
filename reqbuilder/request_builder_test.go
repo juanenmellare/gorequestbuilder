@@ -116,7 +116,7 @@ func Test_apiRequestBuilderImpl_Build_errorBaseURLNotDefined(t *testing.T) {
 	request, err := NewRequestBuilder().SetMethodGet().Build()
 
 	assert.Nil(t, request)
-	assert.Equal(t, "base URL is not define", err.Error())
+	assert.Equal(t, "base URL is not defined", err.Error())
 }
 
 func Test_apiRequestBuilderImpl_Build_error_net_URL(t *testing.T) {
