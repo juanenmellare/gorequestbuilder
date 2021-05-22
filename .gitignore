@@ -16,3 +16,7 @@
 
 # Code Editors / IDEs
 .idea
+
+# Code Coverage
+c.out
+coverage.html
