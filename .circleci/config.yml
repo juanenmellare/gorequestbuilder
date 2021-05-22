@@ -30,6 +30,6 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts
       - run:
-          name: Upload to code coverage
+          name: Upload report to Codecov
           command: |
             bash <(curl -s https://codecov.io/bash) $CODECOV_TOKEN -f /tmp/artifacts/coverage.html
