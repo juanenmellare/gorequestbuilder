@@ -2,25 +2,34 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/repo
+    working_directory: ~/go-request-builder
     docker:
-      - image: circleci/golang:1.16.3
+      - image: circleci/golang:1.15.8
     steps:
       - checkout
       - restore_cache:
           keys:
             - go-mod-v4-{{ checksum "go.sum" }}
       - run:
-          name: Install Dependencies
+          name: Install dependencies
           command: go mod download
       - save_cache:
           key: go-mod-v4-{{ checksum "go.sum" }}
           paths:
             - "/go/pkg/mod"
       - run:
-          name: Run tests
+          name: Create temp directory for artifacts
           command: |
-            mkdir -p /tmp/test-reports
-            gotestsum --junitfile /tmp/test-reports/unit-tests.xml
-      - store_test_results:
-          path: /tmp/test-reports
+            mkdir -p /tmp/artifacts
+      - run:
+          name: Run tests and create coverage report
+          command: |
+            go test ./... -race -coverprofile=coverage.out -covermode=atomic
+            go tool cover -html=coverage.out -o coverage.html
+            mv coverage.html /tmp/artifacts
+      - store_artifacts:
+          path: /tmp/artifacts
+      - run:
+          name: Upload report to Codecov
+          command: |
+            bash <(curl -s https://codecov.io/bash) $CODECOV_TOKEN -f /tmp/artifacts/coverage.html
