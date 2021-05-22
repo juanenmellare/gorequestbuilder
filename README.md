@@ -15,6 +15,6 @@ import "github.com/juanenmellare/gorequestbuilder"
 ## Quick Start
 
 ```go
-	request, err := gorequestbuilder.NewRequestBuilder().SetMethodGet().SetBaseURL("https://golang.org/").Build()
+request, err := gorequestbuilder.NewRequestBuilder().SetMethodGet().SetBaseURL("https://golang.org/").Build()
 ```
 
