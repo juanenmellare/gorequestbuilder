@@ -24,12 +24,12 @@ jobs:
       - run:
           name: Run tests and create coverage report
           command: |
-            go test ./... -race -coverprofile=c.out -covermode=atomic
-            go tool cover -html=c.out -o coverage.html
+            go test ./... -race -coverprofile=coverage.out -covermode=atomic
+            go tool cover -html=coverage.out -o coverage.html
             mv coverage.html /tmp/artifacts
+      - store_artifacts:
+          path: /tmp/artifacts
       - run:
           name: Upload to code coverage
           command: |
-            bash <(curl -s https://codecov.io/bash)
-      - store_artifacts:
-          path: /tmp/artifacts
+            bash <(curl -s https://codecov.io/bash) $CODECOV_TOKEN -f /tmp/artifacts/coverage.out
