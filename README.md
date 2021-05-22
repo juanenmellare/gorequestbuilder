@@ -15,6 +15,7 @@ import "github.com/juanenmellare/gorequestbuilder"
 ```
 
 ## Quick Start
+In every request buillder set the HTTP method and the base URL otherwise it'll return a nil request and an error.
 ```go
 request, err := gorequestbuilder.NewRequestBuilder().
     SetMethodGet().
