@@ -2,7 +2,7 @@
 version: 2.1
 jobs:
   tests:
-    name: Run Tests
+    name: Run Tests and Create Report
     working_directory: ~/go-request-builder
     docker:
       - image: circleci/golang:1.15.8
