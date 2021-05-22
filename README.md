@@ -16,9 +16,9 @@ import "github.com/juanenmellare/gorequestbuilder"
 ```go
 request, err := gorequestbuilder.NewRequestBuilder().
     SetMethodGet().
-	  SetBaseURL("https://golang.org/").
-    SetPath()
-	  Build()
+    SetBaseURL("https://golang.org/").
+    SetPath().
+    Build()
  ```
  
  ## Headers
