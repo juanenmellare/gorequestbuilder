@@ -1,4 +1,4 @@
-package reqbuilder
+package gorequestbuilder
 
 import (
 	"bytes"
