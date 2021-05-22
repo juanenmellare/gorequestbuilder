@@ -54,5 +54,5 @@ var requestBuilder = gorequestbuilder.NewRequestBuilder()
 .
 .
 .
-requestBuilder.Build()
+request, err = requestBuilder.Build()
 ```
