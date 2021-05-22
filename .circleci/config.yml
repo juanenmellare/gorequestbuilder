@@ -32,4 +32,4 @@ jobs:
       - run:
           name: Upload to code coverage
           command: |
-            bash <(curl -s https://codecov.io/bash) $CODECOV_TOKEN -f /tmp/artifacts/coverage.out
+            bash <(curl -s https://codecov.io/bash) $CODECOV_TOKEN -f /tmp/artifacts/coverage.html
