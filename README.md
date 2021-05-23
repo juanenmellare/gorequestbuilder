@@ -17,7 +17,7 @@ In every request buillder set the HTTP method and the base URL otherwise it'll r
 ```go
 request, err := gorequestbuilder.NewRequestBuilder().
     SetMethodGet().
-    SetBaseURL("https://en.wikipedia.org/").
+    SetBaseURL("https://en.wikipedia.org").
     SetPath("/wiki/Go_(programming_language)").
     Build()
  ```
