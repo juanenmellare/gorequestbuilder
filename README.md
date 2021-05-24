@@ -25,12 +25,14 @@ request, err := gorequestbuilder.NewRequestBuilder().
  ## Headers
 ```go
 var requestBuilder = gorequestbuilder.NewRequestBuilder()
+
 requestBuilder.AddHeader("Authorization", "Basic R29sYW5nIERldmVsb3Blcg==")
 ```
 
  ## Query Parameters
 ```go
 var requestBuilder = gorequestbuilder.NewRequestBuilder()
+
 requestBuilder.AddQueryParameter("query", "language=golang")
 ```
 
@@ -45,6 +47,7 @@ body := &Body{
 }
 
 var requestBuilder = gorequestbuilder.NewRequestBuilder()
+
 requestBuilder.SetMethodPost().SetBody(body)
 ```
 
