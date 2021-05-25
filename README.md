@@ -59,3 +59,61 @@ var requestBuilder = gorequestbuilder.NewRequestBuilder()
 .
 request, err = requestBuilder.Build()
 ```
+
+***
+
+## Example of use
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+	"github.com/juanenmellare/gorequestbuilder"
+	"io/ioutil"
+	"net/http"
+)
+
+type RestClient interface {
+	Call(requestBuilder gorequestbuilder.RequestBuilder) (*http.Response, error)
+}
+
+type restClientImpl struct {
+	baseURL string
+	client *http.Client
+}
+
+func NewRestClient(baseURL string, client *http.Client) RestClient {
+	return &restClientImpl{
+		baseURL: baseURL,
+		client: client,
+	}
+}
+
+func (r restClientImpl) Call(requestBuilder gorequestbuilder.RequestBuilder) (*http.Response, error) {
+	request, err := requestBuilder.SetBaseURL(r.baseURL).
+		AddHeader("Authorization", "Basic R29sYW5nIERldmVsb3Blcg==").Build()
+	if err != nil {
+		return nil, errors.New("Error while trying to build request: " + err.Error())
+	}
+
+	return r.client.Do(request)
+}
+
+func main() {
+	restClient := NewRestClient("localhost:8080", &http.Client{})
+
+	requestBuilder := gorequestbuilder.NewRequestBuilder().SetMethodGet().SetPath("/v1/foo")
+
+	response, err := restClient.Call(requestBuilder)
+	if err != nil {
+		fmt.Println("Error while trying to call from rest client: " + err.Error())
+		return
+	}
+
+	defer response.Body.Close()
+	body, err := ioutil.ReadAll(response.Body)
+
+	fmt.Println("[status: " + response.Status + "] -[body: " + string(body) + "]")
+}
+```
