@@ -94,7 +94,7 @@ func (r restClientImpl) Call(requestBuilder gorequestbuilder.RequestBuilder) (*h
 	request, err := requestBuilder.SetBaseURL(r.baseURL).
 		AddHeader("Authorization", "Basic R29sYW5nIERldmVsb3Blcg==").Build()
 	if err != nil {
-		return nil, errors.New("Error while trying to build request: " + err.Error())
+		return nil, errors.New("Build request error: " + err.Error())
 	}
 
 	return r.client.Do(request)
@@ -114,6 +114,6 @@ func main() {
 	defer response.Body.Close()
 	body, err := ioutil.ReadAll(response.Body)
 
-	fmt.Println("[status: " + response.Status + "] -[body: " + string(body) + "]")
+	fmt.Println("[status: " + response.Status + "] - [body: " + string(body) + "]")
 }
 ```
