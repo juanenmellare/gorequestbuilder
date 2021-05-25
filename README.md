@@ -100,7 +100,7 @@ func (r restClientImpl) Call(requestBuilder gorequestbuilder.RequestBuilder) (*h
 }
 
 func main() {
-	restClient := NewRestClient("localhost:8080", &http.Client{})
+	restClient := NewRestClient("http://0.0.0.0:8080", &http.Client{})
 
 	requestBuilder := gorequestbuilder.NewRequestBuilder().SetMethodGet().SetPath("/v1/foo")
 
