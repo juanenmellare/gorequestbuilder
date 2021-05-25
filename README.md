@@ -91,8 +91,7 @@ func NewRestClient(baseURL string, client *http.Client) RestClient {
 }
 
 func (r restClientImpl) Call(requestBuilder gorequestbuilder.RequestBuilder) (*http.Response, error) {
-	request, err := requestBuilder.SetBaseURL(r.baseURL).
-		AddHeader("Authorization", "Basic R29sYW5nIERldmVsb3Blcg==").Build()
+	request, err := requestBuilder.SetBaseURL(r.baseURL).Build()
 	if err != nil {
 		return nil, errors.New("Build request error: " + err.Error())
 	}
