@@ -8,6 +8,7 @@ import (
 	"net/http"
 )
 
+// RequestBuilder is the main interface with some methods to build and handle a request.
 type RequestBuilder interface {
 	SetMethodGet() RequestBuilder
 	SetMethodPut() RequestBuilder
@@ -24,17 +25,18 @@ type RequestBuilder interface {
 }
 
 type requestBuilderImpl struct {
-	headers map[string]string
+	headers         map[string]string
 	queryParameters map[string]string
-	body interface{}
-	baseURL string
-	path string
-	httpMethod string
+	body            interface{}
+	baseURL         string
+	path            string
+	httpMethod      string
 }
 
+// NewRequestBuilder is the constructor of an empty RequestBuilder.
 func NewRequestBuilder() RequestBuilder {
 	return &requestBuilderImpl{
-		headers: make(map[string]string),
+		headers:         make(map[string]string),
 		queryParameters: make(map[string]string),
 	}
 }
@@ -102,12 +104,12 @@ func (r requestBuilderImpl) Build() (*http.Request, error) {
 		return nil, err
 	}
 
-	reader, errReader := parseBodyJsonToReader(r.body)
+	reader, errReader := parseBodyJSONToReader(r.body)
 	if errReader != nil {
 		return nil, errReader
 	}
 
-	request, errRequest := http.NewRequest(r.httpMethod, r.baseURL + r.path, reader)
+	request, errRequest := http.NewRequest(r.httpMethod, r.baseURL+r.path, reader)
 	if errRequest != nil {
 		return nil, errRequest
 	}
@@ -126,7 +128,7 @@ func validateEmptyStringField(fieldValue, errMessage string) error {
 	return nil
 }
 
-func parseBodyJsonToReader(body interface{}) (io.Reader, error) {
+func parseBodyJSONToReader(body interface{}) (io.Reader, error) {
 	var reader io.Reader
 	if body == nil {
 		return reader, nil

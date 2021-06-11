@@ -60,13 +60,13 @@ func Test_requestBuilderImpl_SetBody(t *testing.T) {
 	type BodyRequest struct {
 		Message string `json:"message"`
 	}
-	body := &BodyRequest { Message: "foo" }
+	body := &BodyRequest{Message: "foo"}
 	requestWithBody, _ := requestBuilder.SetBody(body).Build()
 
 	var requestBody map[string]string
 	_ = json.NewDecoder(requestWithBody.Body).Decode(&requestBody)
 
-	assert.Equal(t,"foo", requestBody["message"])
+	assert.Equal(t, "foo", requestBody["message"])
 }
 
 func Test_requestBuilderImpl_SetBody_error(t *testing.T) {
