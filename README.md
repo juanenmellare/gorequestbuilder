@@ -2,7 +2,6 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/juanenmellare/gorequestbuilder.svg)](https://pkg.go.dev/github.com/juanenmellare/gorequestbuilder)
 [![CircleCI](https://circleci.com/gh/juanenmellare/gorequestbuilder.svg?style=shield)](https://circleci.com/gh/juanenmellare/gorequestbuilder)
 [![codecov](https://codecov.io/gh/juanenmellare/gorequestbuilder/branch/main/graph/badge.svg?token=ZCRF68IC8Z)](https://codecov.io/gh/juanenmellare/gorequestbuilder)
-[![Go Report Card](https://goreportcard.com/badge/github.com/juanenmellare/gorequestbuilder)](https://goreportcard.com/report/github.com/juanenmellare/gorequestbuilder)
 
 # <img width="60px" align="center" src="https://miro.medium.com/fit/c/262/262/1*yh90bW8jL4f8pOTZTvbzqw.png">Go Request Builder
 A simple request (http.Request) builder for Golang.
