@@ -1,9 +1,11 @@
 package gorequestbuilder
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"github.com/stretchr/testify/assert"
 	"net/http"
+	"strings"
 	"testing"
 	"unicode"
 )
@@ -96,6 +98,25 @@ func Test_requestBuilderImpl_AddQueryParam(t *testing.T) {
 	request, _ := requestBuilder.AddQueryParameter(key, expectedValue).Build()
 
 	assert.Equal(t, "foo-key=foo+value", request.URL.RawQuery)
+}
+
+func Test_requestBuilderImpl_SetBasicAuthentication(t *testing.T) {
+	username := "root"
+	password := "password"
+	request, _ := requestBuilder.SetBasicAuthentication(username, password).Build()
+
+	authorizationHeaderValue := request.Header.Get("Authorization")
+	authorizationHeaderValueParts := strings.Split(authorizationHeaderValue, " ")
+
+	credentialsBytes, _ := base64.StdEncoding.DecodeString(authorizationHeaderValueParts[1])
+	credentialsParts := strings.Split(string(credentialsBytes), ":")
+
+	assert.Equal(t, 2, len(authorizationHeaderValueParts))
+	assert.Equal(t, "Basic", authorizationHeaderValueParts[0])
+
+	assert.Equal(t, 2, len(credentialsParts))
+	assert.Equal(t, username, credentialsParts[0])
+	assert.Equal(t, password, credentialsParts[1])
 }
 
 func Test_requestBuilderImpl_Build(t *testing.T) {
