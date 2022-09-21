@@ -2,8 +2,10 @@ package gorequestbuilder
 
 import (
 	"bytes"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 )
@@ -21,6 +23,7 @@ type RequestBuilder interface {
 	SetBody(body interface{}) RequestBuilder
 	AddHeader(key, value string) RequestBuilder
 	AddQueryParameter(key, value string) RequestBuilder
+	SetBasicAuthentication(username, password string) RequestBuilder
 	Build() (*http.Request, error)
 }
 
@@ -93,6 +96,13 @@ func (r requestBuilderImpl) AddHeader(key, value string) RequestBuilder {
 
 func (r requestBuilderImpl) AddQueryParameter(key, value string) RequestBuilder {
 	r.queryParameters[key] = value
+	return &r
+}
+
+func (r requestBuilderImpl) SetBasicAuthentication(username, password string) RequestBuilder {
+	rawCredentials := fmt.Sprintf("%s:%s", username, password)
+	credentials := base64.StdEncoding.EncodeToString([]byte(rawCredentials))
+	r.headers["Authorization"] = fmt.Sprintf("Basic %s", credentials)
 	return &r
 }
 
